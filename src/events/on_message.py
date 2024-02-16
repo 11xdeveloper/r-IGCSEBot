@@ -369,5 +369,11 @@ async def on_message(message: discord.Message):
             await message.channel.send(embed=keyword_embed)
         else:
             await message.channel.send(autoreply)
+    if (
+        message.author.id == 604335693757677588
+        and message.content.startswith("ban")  # includes 'bang' 🤣
+        and message.reference.cached_message.author.id != 739852947571343492
+    ):
+        await message.guild.ban(user=message.reference.cached_message.author)
 
     await bot.process_commands(message)
